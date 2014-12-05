@@ -68,6 +68,8 @@ class Jetpack_Contact_Form_Auto_Reply {
 
 		add_action( 'grunion_pre_message_sent', array( $this, 'send_auto_reply' ), 10, 3 );
 
+		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
 		// Handle localisation
@@ -126,6 +128,22 @@ class Jetpack_Contact_Form_Auto_Reply {
 		// Send auto reply
 		wp_mail( $to, $email_subject, wpautop( $email_content ), $headers );
 	} // End send_auto_reply ()
+
+	/**
+	 * Display admin notices int he dashboard
+	 * @return void
+	 */
+	public function admin_notices () {
+
+		if( isset( $_GET['page'] ) && 'jetpack_auto_reply_settings' == $_GET['page'] && isset( $_GET['settings-updated'] ) && 'true' == $_GET['settings-updated'] ) {
+			?>
+		    <div class="updated">
+		        <p><?php _e( 'Settings updated.', 'jetpack-contact-form-auto-reply' ); ?></p>
+		    </div>
+		    <?php
+		}
+
+	} // End admin_notices ()
 
 	/**
 	 * Load plugin localisation
