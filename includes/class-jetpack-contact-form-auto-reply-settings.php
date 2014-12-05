@@ -39,6 +39,8 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		// Add settings page to menu
 		add_action( 'admin_menu' , array( $this, 'add_menu_item' ), 999 );
 
+		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+
 		// Add settings link to plugins page
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->parent->file ) , array( $this, 'add_settings_link' ) );
 	}
@@ -208,6 +210,22 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 
 		echo $html;
 	}
+
+	/**
+	 * Display admin notices int he dashboard
+	 * @return void
+	 */
+	public function admin_notices () {
+
+		if( isset( $_GET['page'] ) && 'jetpack_auto_reply_settings' == $_GET['page'] && isset( $_GET['settings-updated'] ) && 'true' == $_GET['settings-updated'] ) {
+			?>
+		    <div class="updated">
+		        <p><?php _e( 'Settings updated.', 'jetpack-contact-form-auto-reply' ); ?></p>
+		    </div>
+		    <?php
+		}
+
+	} // End admin_notices ()
 
 	/**
 	 * Main Jetpack_Contact_Form_Auto_Reply_Settings Instance
