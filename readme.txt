@@ -1,7 +1,7 @@
 === Jetpack Contact Form Auto Reply ===
 Contributors: hlashbrooke
 Donate link: http://www.hughlashbrooke.com/donate
-Tags: wordpress, plugin, template
+Tags: jetpack, contact, form, auto reply, email
 Requires at least: 4.0
 Tested up to: 4.0.1
 Stable tag: 1.0
@@ -16,7 +16,7 @@ Send an automatic reply to anyone who fills in your Jetpack contact form
 
 **Plugin features**
 
-- Craft your custom reply message using WordPress' WYSIWYG editor
+- Craft your custom reply message using the WordPress WYSIWYG editor
 - Set a unique from name and address for auto replies
 
 Want to contribute? [Fork the GitHub repository](https://github.com/hlashbrooke/Jetpack-Contact-Form-Auto-Reply).
@@ -38,7 +38,7 @@ You can set a custom from name and address for your automatic reply, so you can 
 == Changelog ==
 
 = 1.0 =
-* 2014-12-05
+* 2014-12-07
 * Initial release #boom
 
 == Upgrade Notice ==
