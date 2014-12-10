@@ -31,9 +31,17 @@ Installing "Jetpack Contact Form Auto Reply" can be done either by searching for
 
 == Frequently Asked Questions ==
 
+= The automatic reply isn't sending! Why doesn't this plugin work? =
+
+First make sure that you have set up your auto reply to work with all the settings active (Jetpack > Auto Reply). If all of that is setup correctly then the problem will either be that your server is not allowing mails to be sent, or the emails are being sent, but being marked as spam.
+
 = What if I don't want to show my email address to everyone who contacts me? =
 
 You can set a custom from name and address for your automatic reply, so you can use any email address (real or fake) that you like.
+
+= Where can I see a demo of this plugin in action? =
+
+You are welcome to send a message from the contact form on [my website](http://www.hughlashbrooke.com/) (bottom of the sidebar), which will send an automatic reply to the email address specified in the 'Email' field.
 
 == Changelog ==
 
