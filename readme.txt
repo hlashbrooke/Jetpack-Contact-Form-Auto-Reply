@@ -3,8 +3,8 @@ Contributors: hlashbrooke
 Donate link: http://www.hughlashbrooke.com/donate
 Tags: jetpack, contact, form, auto reply, email
 Requires at least: 4.0
-Tested up to: 4.0.1
-Stable tag: 1.0
+Tested up to: 4.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ Send an automatic reply to anyone who fills in your Jetpack contact form
 
 - Craft your custom reply message using the WordPress WYSIWYG editor
 - Set a unique from name and address for auto replies
+- Include user info in auto reply (name, email address, message content, etc.)
 
 Want to contribute? [Fork the GitHub repository](https://github.com/hlashbrooke/Jetpack-Contact-Form-Auto-Reply).
 
@@ -39,11 +40,26 @@ First make sure that you have set up your auto reply to work with all the settin
 
 You can set a custom from name and address for your automatic reply, so you can use any email address (real or fake) that you like.
 
+= How do I include the sender's name in the auto reply email subject? =
+
+You can include any of the contact form fields in the subject by adding the field label like this: `{Field label}` - e.g. `{Name}`. This is case-sensitive.
+
+= How do I include the sender's message in the auto reply? =
+
+Just like with the subject, you can include any of the contact form fields in the auto reply email by adding the field label like this: `{Field label}` - e.g. `{Comment}`. This is case-sensitive.
+
 = Where can I see a demo of this plugin in action? =
 
 You are welcome to send a message from the contact form on [my website](http://www.hughlashbrooke.com/) (bottom of the sidebar), which will send an automatic reply to the email address specified in the 'Email' field.
 
 == Changelog ==
+
+= 1.1 =
+* 2014-12-18
+* [NEW] Adding option to not send auto reply when email is marked as spam
+* [NEW] Adding filters to all email parameters
+* [NEW] Adding ability to include original message data in auto reply content and subject
+* [TWEAK] Improving description for email field option
 
 = 1.0 =
 * 2014-12-07
@@ -51,5 +67,5 @@ You are welcome to send a message from the contact form on [my website](http://w
 
 == Upgrade Notice ==
 
-= 1.0 =
-* Initial release #boom
+= 1.1=
+Adding option to not send auto reply when email is marked as spam, filters to all email parameters and ability to include original message data in auto reply content and subject.

@@ -1,13 +1,13 @@
 <?php
 /*
  * Plugin Name: Jetpack Contact Form Auto Reply
- * Version: 1.0
+ * Version: 1.1
  * Plugin URI: https://wordpress.org/plugins/jetpack-contact-form-auto-reply/
  * Description: Send an automatic reply to anyone who fills in your Jetpack contact form
  * Author: Hugh Lashbrooke
  * Author URI: http://www.hughlashbrooke.com/
  * Requires at least: 4.0
- * Tested up to: 4.0.1
+ * Tested up to: 4.1
  *
  * Text Domain: jetpack-contact-form-auto-reply
  * Domain Path: /lang/

@@ -78,6 +78,7 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		register_setting( $this->parent->_token . '_settings', $this->base . 'email_from_name' );
 		register_setting( $this->parent->_token . '_settings', $this->base . 'email_from_address' );
 		register_setting( $this->parent->_token . '_settings', $this->base . 'email_field' );
+		register_setting( $this->parent->_token . '_settings', $this->base . 'not_spam' );
 
 		add_settings_field( 'enable', __( 'Enable auto reply', 'jetpack-contact-form-auto-reply' ), array( $this, 'enable_field' ), $this->parent->_token . '_settings', 'general-settings' );
 		add_settings_field( 'email_subject', __( 'Email subject', 'jetpack-contact-form-auto-reply' ), array( $this, 'email_subject' ), $this->parent->_token . '_settings', 'general-settings' );
@@ -85,6 +86,7 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		add_settings_field( 'email_from_name', __( 'Email from name', 'jetpack-contact-form-auto-reply' ), array( $this, 'email_from_name' ), $this->parent->_token . '_settings', 'general-settings' );
 		add_settings_field( 'email_from_address', __( 'Email from address', 'jetpack-contact-form-auto-reply' ), array( $this, 'email_from_address' ), $this->parent->_token . '_settings', 'general-settings' );
 		add_settings_field( 'email_field', __( 'Email address field', 'jetpack-contact-form-auto-reply' ), array( $this, 'email_field' ), $this->parent->_token . '_settings', 'general-settings' );
+		add_settings_field( 'not_spam', __( 'Check for spam', 'jetpack-contact-form-auto-reply' ), array( $this, 'not_spam_field' ), $this->parent->_token . '_settings', 'general-settings' );
 
 	}
 
@@ -113,7 +115,7 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		$html .= '<br/>' . "\n";
 
 		$html .= '<label for="' . esc_attr( $this->base . 'email_subject' ) . '">' . "\n";
-			$html .= '<span class="description">' . __( 'The subject of the auto reply email.', 'jetpack-contact-form-auto-reply' ) . '</span>' . "\n";
+			$html .= '<span class="description">' . sprintf( __( 'The subject of the auto reply email. Include sender details by including the field label like this: %1$s{Field name}%2$s - e.g. %1$s{Name}%2$s', 'jetpack-contact-form-auto-reply' ), '<code>', '</code>' ) . '</span>' . "\n";
 		$html .= '</label>' . "\n";
 
 		echo $html;
@@ -135,6 +137,8 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		wp_editor( wpautop( $email_content ), 'email-content', $editor_settings );
 
 		$html = ob_get_clean();
+
+		$html .= '<span class="description">' . sprintf( __( 'Include sender message details by including the field label like this: %1$s{Field name}%2$s - e.g. %1$s{Comment}%2$s', 'jetpack-contact-form-auto-reply' ), '<code>', '</code>' ) . '</span>' . "\n";
 
 		echo $html;
 	}
@@ -178,10 +182,24 @@ class Jetpack_Contact_Form_Auto_Reply_Settings {
 		$html .= '<br/>' . "\n";
 
 		$html .= '<label for="' . esc_attr( $this->base . 'email_field' ) . '">' . "\n";
-			$html .= '<span class="description">' . __( 'The label of field in the contact form that will contain the email address to use for the auto reply (case sensitive).', 'jetpack-contact-form-auto-reply' ) . '</span>' . "\n";
+			$html .= '<span class="description">' . __( 'The label of the field in the contact form that will contain the email address to use for the auto reply (case sensitive) - e.g. \'Email\'.', 'jetpack-contact-form-auto-reply' ) . '</span>' . "\n";
 		$html .= '</label>' . "\n";
 
 		echo $html;
+	}
+
+	public function not_spam_field () {
+
+		$not_spam = get_option( $this->base . 'not_spam', '' );
+
+		$html = '<input id="' . esc_attr( $this->base . 'not_spam' ) . '" type="checkbox" value="on" name="' . esc_attr( $this->base . 'not_spam' ) . '" ' . checked( $not_spam, 'on', false ) . ' />' . "\n";
+
+		$html .= '<label for="' . esc_attr( $this->base . 'not_spam' ) . '">' . "\n";
+			$html .= '<span class="description">' . __( 'Do not send auto reply if email is marked as spam.', 'jetpack-contact-form-auto-reply' ) . '</span>' . "\n";
+		$html .= '</label>' . "\n";
+
+		echo $html;
+
 	}
 
 	/**
