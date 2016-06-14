@@ -133,8 +133,8 @@ class Jetpack_Contact_Form_Auto_Reply {
 
 		// Replace dynamic content with field data
 		foreach( $fields as $field => $value ) {
-			$email_subject = str_replace( '{' . $field . '}', $value, $email_subject );
-			$email_content = str_replace( '{' . $field . '}', $value, $email_content );
+			$email_subject = str_replace( '{' . $field . '}', is_array($value) ? join($value, ', ') : $value, $email_subject );
+			$email_content = str_replace( '{' . $field . '}', is_array($value) ? join($value, ', ') : $value, $email_content );
 		}
 
 		$email_content = wpautop( $email_content );
