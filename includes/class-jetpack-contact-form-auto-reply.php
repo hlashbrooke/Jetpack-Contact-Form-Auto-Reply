@@ -91,7 +91,7 @@ class Jetpack_Contact_Form_Auto_Reply {
 		// Don't send if email is marked as spam if option is set
 		$not_spam = get_option( $this->settings->base . 'not_spam', '' );
 		$post_status = get_post_status( $post_id );
-		if( $not_spam && 'spam' == $post_status ) {
+		if( $not_spam && ( 'spam' == $post_status || 'trash' == $post_status ) ) {
 			return;
 		}
 
